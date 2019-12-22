@@ -10,6 +10,11 @@ use Dugajean\Repositories\Console\Commands\MakeRepositoryCommand;
 use Dugajean\Repositories\Console\Commands\Creators\CriteriaCreator;
 use Dugajean\Repositories\Console\Commands\Creators\RepositoryCreator;
 
+/**
+ * Class RepositoryProvider
+ *
+ * @package Dugajean\Repositories\Providers
+ */
 class RepositoryProvider extends ServiceProvider
 {
     /**
@@ -25,14 +30,11 @@ class RepositoryProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-        $configPath = __DIR__ . '/../../config/repositories.php';
-
-        $this->publishes(
-            [$configPath => config_path('repositories.php')],
-            'repositories'
-        );
+        $this->publishes([
+            __DIR__ . '/../../config/repositories.php' => config_path('repositories.php')
+        ], 'repositories');
     }
 
     /**
@@ -40,57 +42,58 @@ class RepositoryProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerBindings();
         $this->registerMakeRepositoryCommand();
         $this->registerMakeCriteriaCommand();
-        $this->commands(['command.repository.make', 'command.criteria.make']);
-        $configPath = __DIR__ . '/../../config/repositories.php';
 
-        $this->mergeConfigFrom(
-            $configPath,
-            'repositories'
-        );
+        $this->commands(['command.repository.make', 'command.criteria.make']);
+        $this->mergeConfigFrom(__DIR__ . '/../../config/repositories.php', 'repositories');
     }
 
     /**
      * Register the bindings.
+     *
+     * @return void
      */
-    protected function registerBindings()
+    protected function registerBindings(): void
     {
         $this->app->instance('FileSystem', new Filesystem());
 
-        $this->app->bind('Composer', function ($app) {
+        $this->app->bind('Composer', static function ($app): Composer {
             return new Composer($app['FileSystem']);
         });
 
-        $this->app->singleton('RepositoryCreator', function ($app) {
+        $this->app->singleton('RepositoryCreator', static function ($app): RepositoryCreator {
             return new RepositoryCreator($app['FileSystem']);
         });
 
-        $this->app->singleton('CriteriaCreator', function ($app) {
+        $this->app->singleton('CriteriaCreator', static function ($app): CriteriaCreator {
             return new CriteriaCreator($app['FileSystem']);
         });
     }
 
     /**
      * Register the make:repository command.
+     *
+     * @return void
      */
-    protected function registerMakeRepositoryCommand()
+    protected function registerMakeRepositoryCommand(): void
     {
-        $this->app->singleton('command.repository.make', function ($app) {
+        $this->app->singleton('command.repository.make', static function ($app): MakeRepositoryCommand {
             return new MakeRepositoryCommand($app['RepositoryCreator']);
         });
     }
 
     /**
      * Register the make:criteria command.
+     *
+     * @return void
      */
-    protected function registerMakeCriteriaCommand()
+    protected function registerMakeCriteriaCommand(): void
     {
-        // Make criteria command.
-        $this->app->singleton('command.criteria.make', function ($app) {
+        $this->app->singleton('command.criteria.make', static function ($app): MakeCriteriaCommand {
             return new MakeCriteriaCommand($app['CriteriaCreator']);
         });
     }
@@ -100,11 +103,8 @@ class RepositoryProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
-        return [
-            'command.repository.make',
-            'command.criteria.make',
-        ];
+        return ['command.repository.make', 'command.criteria.make'];
     }
 }

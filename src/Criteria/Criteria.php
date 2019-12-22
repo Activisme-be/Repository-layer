@@ -5,6 +5,11 @@ namespace Dugajean\Repositories\Criteria;
 use Illuminate\Database\Eloquent\Model;
 use Dugajean\Repositories\Contracts\RepositoryInterface;
 
+/**
+ * Class Criteria
+ *
+ * @package Dugajean\Repositories\Criteria
+ */
 abstract class Criteria
 {
     /**

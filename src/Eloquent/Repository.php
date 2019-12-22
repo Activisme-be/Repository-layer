@@ -11,6 +11,11 @@ use Dugajean\Repositories\Contracts\CriteriaInterface;
 use Dugajean\Repositories\Contracts\RepositoryInterface;
 use Dugajean\Repositories\Exceptions\RepositoryException;
 
+/**
+ * Class Repository
+ *
+ * @package Dugajean\Repositories\Eloquent
+ */
 abstract class Repository implements RepositoryInterface, CriteriaInterface
 {
     /**
