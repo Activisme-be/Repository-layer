@@ -4,6 +4,11 @@ namespace Dugajean\Repositories\Console\Commands;
 
 use Dugajean\Repositories\Console\Commands\Creators\CriteriaCreator;
 
+/**
+ * Class MakeCriteriaCommand
+ *
+ * @package Dugajean\Repositories\Console\Commands
+ */
 class MakeCriteriaCommand extends BaseCommand
 {
     /**
@@ -21,6 +26,8 @@ class MakeCriteriaCommand extends BaseCommand
     protected $description = 'Create a new criteria class';
 
     /**
+     * MakeCriteriaCommand constructor
+     *
      * @param CriteriaCreator $creator
      */
     public function __construct(CriteriaCreator $creator)
