@@ -74,7 +74,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     public abstract function model();
 
     /**
-     * Mzthod for getting all the records from the storage.
+     * Method for getting all the records from the storage.
      *
      * @param  array $columns
      * @return mixed
@@ -192,7 +192,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
-     * Method for deleting a resord.
+     * Method for deleting a record.
      *
      * @param  $id
      * @return mixed
