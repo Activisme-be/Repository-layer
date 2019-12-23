@@ -6,6 +6,11 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Artisan;
 use Doctrine\Common\Inflector\Inflector;
 
+/**
+ * Class RepositoryCreator
+ *
+ * @package Dugajean\Repositories\Console\Commands\Creators
+ */
 class RepositoryCreator extends BaseCreator
 {
     /**
@@ -30,21 +35,19 @@ class RepositoryCreator extends BaseCreator
      *
      * @return array
      */
-    protected function getPopulateData()
+    protected function getPopulateData(): array
     {
         $repositoryNamespace = Config::get('repositories.repository_namespace');
         $repositoryClass = $this->getName();
         $modelPath = Config::get('repositories.model_namespace');
         $modelName = $this->getModelName();
 
-        $populateData = [
+        return [
             'repository_namespace' => $repositoryNamespace,
             'repository_class' => $repositoryClass,
             'model_path' => $modelPath,
             'model_name' => $modelName,
         ];
-
-        return $populateData;
     }
 
     /**
@@ -53,11 +56,11 @@ class RepositoryCreator extends BaseCreator
      * @return bool|int
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    protected function createClass()
+    protected function createClass(): bool
     {
         $model = Config::get('repositories.model_namespace') . '\\' . $this->name;
 
-        if (!class_exists($model)) {
+        if (! class_exists($model)) {
             if ($this->command->confirm("Do you want to create a {$model} model?")) {
                 Artisan::call('make:model', ['name' => $this->name]);
             } else {
@@ -77,7 +80,7 @@ class RepositoryCreator extends BaseCreator
      *
      * @return string
      */
-    private function getModelName()
+    private function getModelName(): string
     {
         $model = $this->getModel();
 
@@ -89,7 +92,7 @@ class RepositoryCreator extends BaseCreator
      *
      * @return string
      */
-    private function stripRepositoryName()
+    private function stripRepositoryName(): string
     {
         $stripped = str_ireplace('repository', '', $this->getName());
 

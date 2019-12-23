@@ -4,6 +4,11 @@ namespace Dugajean\Repositories\Console\Commands;
 
 use Dugajean\Repositories\Console\Commands\Creators\RepositoryCreator;
 
+/**
+ * Class MakeRepositoryCommand
+ *
+ * @package Dugajean\Repositories\Console\Commands
+ */
 class MakeRepositoryCommand extends BaseCommand
 {
     /**
@@ -21,7 +26,10 @@ class MakeRepositoryCommand extends BaseCommand
     protected $description = 'Create a new repository class';
 
     /**
-     * @param RepositoryCreator $creator
+     * MakeRepositoryCommand constructor
+     *
+     * @param  RepositoryCreator $creator
+     * @return void
      */
     public function __construct(RepositoryCreator $creator)
     {

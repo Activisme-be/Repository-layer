@@ -6,6 +6,11 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Config;
 use Dugajean\Repositories\Console\Commands\BaseCommand;
 
+/**
+ * Class BaseCreator
+ *
+ * @package Dugajean\Repositories\Console\Commands\Creators
+ */
 abstract class BaseCreator
 {
     /**
@@ -71,13 +76,12 @@ abstract class BaseCreator
     /**
      * Create the repository.
      *
-     * @param string      $name
-     * @param string      $model
-     * @param BaseCommand $command
-     *
+     * @param  string      $name
+     * @param  string      $model
+     * @param  BaseCommand $command
      * @return int
      */
-    public function create($name, $model, BaseCommand $command)
+    public function create(string $name, string $model, BaseCommand $command): int
     {
         $this->command = $command;
 
@@ -100,8 +104,10 @@ abstract class BaseCreator
 
     /**
      * Create the necessary directory.
+     *
+     * @return void
      */
-    protected function createDirectory()
+    protected function createDirectory(): void
     {
         $directory = $this->getDirectory();
 
@@ -115,7 +121,7 @@ abstract class BaseCreator
      *
      * @return string
      */
-    protected function getPath()
+    protected function getPath(): string
     {
         return $this->getDirectory() . DIRECTORY_SEPARATOR . $this->getName() . '.php';
     }
@@ -126,7 +132,7 @@ abstract class BaseCreator
      * @return string
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    protected function getStub()
+    protected function getStub(): string
     {
         return $this->files->get($this->getStubPath() . $this->command->getCurrentEntity() . '.stub');
     }
@@ -136,7 +142,7 @@ abstract class BaseCreator
      *
      * @return string
      */
-    protected function getStubPath()
+    protected function getStubPath(): string
     {
         return __DIR__ . '/../../../../resources/stubs/';
     }
@@ -164,12 +170,12 @@ abstract class BaseCreator
      *
      * @return bool
      */
-    abstract protected function createClass();
+    abstract protected function createClass(): bool;
 
     /**
      * Fetch the replacement data for the stub.
      *
      * @return array
      */
-    abstract protected function getPopulateData();
+    abstract protected function getPopulateData(): array;
 }

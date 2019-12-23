@@ -5,6 +5,11 @@ namespace Dugajean\Repositories\Console\Commands\Creators;
 use Illuminate\Support\Facades\Config;
 use Doctrine\Common\Inflector\Inflector;
 
+/**
+ * Class CriteriaCreator
+ *
+ * @package Dugajean\Repositories\Console\Commands\Creators
+ */
 class CriteriaCreator extends BaseCreator
 {
     /**
@@ -12,7 +17,7 @@ class CriteriaCreator extends BaseCreator
      *
      * @return array
      */
-    protected function getPopulateData()
+    protected function getPopulateData(): array
     {
         $criteria = $this->getName();
         $model = $this->pluralizeModel();
@@ -23,10 +28,7 @@ class CriteriaCreator extends BaseCreator
             $criteriaNamespace .= '\\' . $model;
         }
 
-        $populateData = [
-            'criteria_namespace' => $criteriaNamespace,
-            'criteria_class' => $criteriaClass,
-        ];
+        $populateData = ['criteria_namespace' => $criteriaNamespace, 'criteria_class' => $criteriaClass];
 
         return $populateData;
     }
@@ -37,7 +39,7 @@ class CriteriaCreator extends BaseCreator
      * @return int
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    protected function createClass()
+    protected function createClass(): bool
     {
         if ($this->files->exists($this->getPath())) {
             throw new \RuntimeException("The criteria with the name '{$this->getName()}' already exists.");
@@ -51,7 +53,7 @@ class CriteriaCreator extends BaseCreator
      *
      * @return string
      */
-    private function pluralizeModel()
+    private function pluralizeModel(): string
     {
         if (null === $this->getModel()) {
             return '';

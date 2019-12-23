@@ -76,7 +76,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Method for getting all the records from the storage.
      *
-     * @param  array $columns
+     * @param  array $columns   The colums you want to display in your view.
      * @return mixed
      */
     public function all($columns = ['*'])
@@ -122,9 +122,9 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Getting all the records in an paginated way.
      *
-     * @param  int    $perPage
-     * @param  array  $columns
-     * @param  string $method
+     * @param  int    $perPage  The amount of columns u want to display per page.
+     * @param  array  $columns  The columns u want to use in your view.
+     * @param  string $method   The method identifier for your pagination.
      * @return Paginator
      */
     public function paginate($perPage = 25, $columns = ['*'], $method = 'full')
@@ -165,8 +165,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Method for updating a record in the storage.
      *
-     * @param  array  $data
-     * @param  mixed  $id
+     * @param  array  $data         The new data array where for the database record.
+     * @param  mixed  $id           The unique identifier column from your database table.
      * @param  string $attribute
      * @return mixed
      */
@@ -179,7 +179,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * Method for mass updating a record.
      *
      * @param  array $data
-     * @param  int   $id
+     * @param  int   $id    The unique identifier column from your database table.
      * @return mixed
      */
     public function updateRich(array $data, $id)
@@ -194,7 +194,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Method for deleting a record.
      *
-     * @param  $id
+     * @param  mixed $id    The unique identifier column from your database table.
      * @return mixed
      */
     public function delete($id)
@@ -205,8 +205,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Method for getting the records based on their unique identifier.
      *
-     * @param  int   $id
-     * @param  array $columns
+     * @param  int   $id        The unique identifier column from your database table.
+     * @param  array $columns   The columns u want to use in your views.
      * @return mixed
      */
     public function find($id, $columns = ['*'])
@@ -234,9 +234,9 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Find all the records by the matching attribute.
      *
-     * @param  string $attribute
-     * @param  mixed  $value
-     * @param  array  $columns
+     * @param  string $attribute    The database column name
+     * @param  mixed  $value        The value u want to search in the database column
+     * @param  array  $columns      The columns u want in your output
      * @return mixed
      */
     public function findAllBy($attribute, $value, $columns = ['*'])
@@ -267,12 +267,12 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
                     : $model->orWhere($value);
             } elseif (is_array($value)) {
                 if (count($value) === 3) {
-                    list($field, $operator, $search) = $value;
+                    [$field, $operator, $search] = $value;
                     $model = (!$or)
                         ? $model->where($field, $operator, $search)
                         : $model->orWhere($field, $operator, $search);
                 } elseif (count($value) === 2) {
-                    list($field, $search) = $value;
+                    [$field, $search] = $value;
                     $model = (!$or)
                         ? $model->where($field, '=', $search)
                         : $model->orWhere($field, '=', $search);
@@ -295,7 +295,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * @throws RepositoryException
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function makeModel()
+    public function makeModel(): Model
     {
         return $this->setModel($this->model());
     }

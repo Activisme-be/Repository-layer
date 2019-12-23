@@ -9,20 +9,32 @@ use Symfony\Component\Console\Input\InputArgument;
 use Dugajean\Repositories\Console\Commands\Creators\BaseCreator;
 use Dugajean\Repositories\Console\Commands\Creators\RepositoryCreator;
 
+/**
+ * Class BaseCommand
+ *
+ * @package Dugajean\Repositories\Console\Commands
+ */
 abstract class BaseCommand extends Command
 {
     /**
+     * The veriable for binding the Repository creator.
+     *
      * @var RepositoryCreator
      */
     protected $creator;
 
     /**
+     * Composer implementation variable.
+     *
      * @var Composer
      */
     protected $composer;
 
     /**
-     * @param BaseCreator $creator
+     * BaseCommand constructor
+     *
+     * @param  BaseCreator $creator
+     * @return void
      */
     public function __construct(BaseCreator $creator)
     {
@@ -79,9 +91,7 @@ abstract class BaseCommand extends Command
      */
     protected function getArguments()
     {
-        return [
-            ['name', InputArgument::REQUIRED, 'The name for this entity.'],
-        ];
+        return [['name', InputArgument::REQUIRED, 'The name for this entity.']];
     }
 
     /**
@@ -91,8 +101,6 @@ abstract class BaseCommand extends Command
      */
     protected function getOptions()
     {
-        return [
-            ['model', null, InputOption::VALUE_REQUIRED, 'The model name.', null],
-        ];
+        return [['model', null, InputOption::VALUE_REQUIRED, 'The model name.', null]];
     }
 }

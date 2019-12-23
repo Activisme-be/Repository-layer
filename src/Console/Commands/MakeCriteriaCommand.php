@@ -28,7 +28,8 @@ class MakeCriteriaCommand extends BaseCommand
     /**
      * MakeCriteriaCommand constructor
      *
-     * @param CriteriaCreator $creator
+     * @param  CriteriaCreator $creator
+     * @return void
      */
     public function __construct(CriteriaCreator $creator)
     {
