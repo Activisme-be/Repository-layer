@@ -71,7 +71,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      *
      * @return mixed
      */
-    public abstract function model();
+    abstract public function model();
 
     /**
      * Method for getting all the records from the storage.
