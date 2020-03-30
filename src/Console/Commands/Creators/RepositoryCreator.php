@@ -2,7 +2,6 @@
 
 namespace Dugajean\Repositories\Console\Commands\Creators;
 
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Artisan;
 use Doctrine\Common\Inflector\Inflector;
 
@@ -37,9 +36,9 @@ class RepositoryCreator extends BaseCreator
      */
     protected function getPopulateData(): array
     {
-        $repositoryNamespace = Config::get('repositories.repository_namespace');
+        $repositoryNamespace = config('repositories.repository_namespace');
         $repositoryClass = $this->getName();
-        $modelPath = Config::get('repositories.model_namespace');
+        $modelPath = config('repositories.model_namespace');
         $modelName = $this->getModelName();
 
         return [
@@ -58,7 +57,7 @@ class RepositoryCreator extends BaseCreator
      */
     protected function createClass(): bool
     {
-        $model = Config::get('repositories.model_namespace') . '\\' . $this->name;
+        $model = config('repositories.model_namespace') . '\\' . $this->name;
 
         if (! class_exists($model)) {
             if ($this->command->confirm("Do you want to create a {$model} model?")) {
