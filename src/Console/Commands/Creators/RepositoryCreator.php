@@ -36,16 +36,11 @@ class RepositoryCreator extends BaseCreator
      */
     protected function getPopulateData(): array
     {
-        $repositoryNamespace = config('repositories.repository_namespace');
-        $repositoryClass = $this->getName();
-        $modelPath = config('repositories.model_namespace');
-        $modelName = $this->getModelName();
-
         return [
-            'repository_namespace' => $repositoryNamespace,
-            'repository_class' => $repositoryClass,
-            'model_path' => $modelPath,
-            'model_name' => $modelName,
+            'repository_namespace' => config('repositories.repository_namespace'),
+            'repository_class' => $this->getName(),
+            'model_path' => config('repositories.model_namespace'),
+            'model_name' => $this->getModel(),
         ];
     }
 
