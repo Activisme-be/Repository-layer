@@ -74,6 +74,14 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     abstract public function model();
 
     /**
+     * @throws RepositoryException
+     */
+    public function resetModel()
+    {
+        $this->makeModel();
+    }
+
+    /**
      * Method for getting all the records from the storage.
      *
      * @param  array $columns   The colums you want to display in your view.
