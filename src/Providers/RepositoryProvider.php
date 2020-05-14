@@ -47,9 +47,18 @@ class RepositoryProvider extends ServiceProvider
         $this->registerBindings();
         $this->registerMakeRepositoryCommand();
         $this->registerMakeCriteriaCommand();
+        $this->registerServiceProviders();
 
         $this->commands(['command.repository.make', 'command.criteria.make']);
         $this->mergeConfigFrom(__DIR__ . '/../../config/repositories.php', 'repositories');
+    }
+
+    /**
+     * Register the secondary service providers for the package.
+     */
+    protected function registerServiceProviders(): void
+    {
+        $this->app->bind(EventServiceProvider::class);
     }
 
     /**

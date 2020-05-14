@@ -3,7 +3,6 @@
 namespace Dugajean\Repositories\Console\Commands\Creators;
 
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Config;
 use Dugajean\Repositories\Console\Commands\BaseCommand;
 
 /**
@@ -99,7 +98,7 @@ abstract class BaseCreator
      */
     protected function getDirectory()
     {
-        return Config::get("repositories.{$this->command->getCurrentEntity()}_path");
+        return config("repositories.{$this->command->getCurrentEntity()}_path");
     }
 
     /**
@@ -155,10 +154,9 @@ abstract class BaseCreator
      */
     protected function populateStub()
     {
-        $populate_data = $this->getPopulateData();
         $stub = $this->getStub();
 
-        foreach ($populate_data as $key => $value) {
+        foreach ($this->getPopulateData() as $key => $value) {
             $stub = str_replace($key, $value, $stub);
         }
 
