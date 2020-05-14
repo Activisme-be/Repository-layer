@@ -1,14 +1,14 @@
 <?php
 
-namespace Dugajean\Repositories\Console\Commands\Creators;
+namespace ActivismeBe\Repositories\Console\Commands\Creators;
 
 use Illuminate\Filesystem\Filesystem;
-use Dugajean\Repositories\Console\Commands\BaseCommand;
+use ActivismeBe\Repositories\Console\Commands\BaseCommand;
 
 /**
  * Class BaseCreator
  *
- * @package Dugajean\Repositories\Console\Commands\Creators
+ * @package ActivismeBe\Repositories\Console\Commands\Creators
  */
 abstract class BaseCreator
 {

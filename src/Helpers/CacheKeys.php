@@ -1,11 +1,11 @@
 <?php
 
-namespace Dugajean\Repositories\Helpers;
+namespace ActivismeBe\Repositories\Helpers;
 
 /**
  * Class CacheKeys
  *
- * @package Dugajean\Repositories\Helpers
+ * @package ActivismeBe\Repositories\Helpers
  */
 class CacheKeys
 {

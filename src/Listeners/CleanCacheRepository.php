@@ -1,18 +1,18 @@
 <?php
 
-namespace Dugajean\Repositories\Listeners;
+namespace ActivismeBe\Repositories\Listeners;
 
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
-use Dugajean\Repositories\Contracts\RepositoryInterface;
-use Dugajean\Repositories\Events\RepositoryEventBase;
-use Dugajean\Repositories\Helpers\CacheKeys;
+use ActivismeBe\Repositories\Contracts\RepositoryInterface;
+use ActivismeBe\Repositories\Events\RepositoryEventBase;
+use ActivismeBe\Repositories\Helpers\CacheKeys;
 
 /**
  * Class CleanCacheRepository
  *
- * @package Dugajean\Repositories\Listeners
+ * @package ActivismeBe\Repositories\Listeners
  */
 class CleanCacheRepository
 {

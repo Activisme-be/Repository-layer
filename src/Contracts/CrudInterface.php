@@ -1,6 +1,6 @@
 <?php
 
-namespace Dugajean\Repositories\Contracts;
+namespace ActivismeBe\Repositories\Contracts;
 
 interface CrudInterface
 {

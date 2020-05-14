@@ -1,13 +1,13 @@
 <?php
 
-namespace Dugajean\Repositories\Console\Commands;
+namespace ActivismeBe\Repositories\Console\Commands;
 
-use Dugajean\Repositories\Console\Commands\Creators\RepositoryCreator;
+use ActivismeBe\Repositories\Console\Commands\Creators\RepositoryCreator;
 
 /**
  * Class MakeRepositoryCommand
  *
- * @package Dugajean\Repositories\Console\Commands
+ * @package ActivismeBe\Repositories\Console\Commands
  */
 class MakeRepositoryCommand extends BaseCommand
 {

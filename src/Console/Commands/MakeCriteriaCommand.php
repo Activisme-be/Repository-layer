@@ -1,13 +1,13 @@
 <?php
 
-namespace Dugajean\Repositories\Console\Commands;
+namespace ActivismeBe\Repositories\Console\Commands;
 
-use Dugajean\Repositories\Console\Commands\Creators\CriteriaCreator;
+use ActivismeBe\Repositories\Console\Commands\Creators\CriteriaCreator;
 
 /**
  * Class MakeCriteriaCommand
  *
- * @package Dugajean\Repositories\Console\Commands
+ * @package ActivismeBe\Repositories\Console\Commands
  */
 class MakeCriteriaCommand extends BaseCommand
 {

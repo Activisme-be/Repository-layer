@@ -1,10 +1,10 @@
 <?php
 
-namespace Dugajean\Repositories\Traits;
+namespace ActivismeBe\Repositories\Traits;
 
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
-use Dugajean\Repositories\Contracts\CriteriaInterface;
-use Dugajean\Repositories\Helpers\CacheKeys;
+use ActivismeBe\Repositories\Contracts\CriteriaInterface;
+use ActivismeBe\Repositories\Helpers\CacheKeys;
 use ReflectionObject;
 use Exception;
 

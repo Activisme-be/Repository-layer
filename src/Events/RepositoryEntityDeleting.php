@@ -1,11 +1,11 @@
 <?php
 
-namespace Dugajean\Repositories\Events;
+namespace ActivismeBe\Repositories\Events;
 
 /**
  * Class RepositoryEntityDeleting
  *
- * @package Dugajean\Repositories\Events
+ * @package ActivismeBe\Repositories\Events
  */
 class RepositoryEntityDeleting extends RepositoryEventBase
 {

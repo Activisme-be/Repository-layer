@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 namespace criteria_namespace;
 
-use Dugajean\Repositories\Criteria\Criteria;
-use Dugajean\Repositories\Contracts\RepositoryInterface;
+use ActivismeBe\Repositories\Criteria\Criteria;
+use ActivismeBe\Repositories\Contracts\RepositoryInterface;
 
-class criteria_class extends Criteria 
+class criteria_class extends Criteria
 {
     /**
      * The criteria on which a repository should perform.

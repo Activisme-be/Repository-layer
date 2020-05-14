@@ -1,11 +1,11 @@
 <?php
 
-namespace Dugajean\Repositories\Events;
+namespace ActivismeBe\Repositories\Events;
 
 /**
  * Class RepositoryEntityCreated
  *
- * @package Dugajean\Repositories\Events
+ * @package ActivismeBe\Repositories\Events
  */
 class RepositoryEntityCreated extends RepositoryEventBase
 {

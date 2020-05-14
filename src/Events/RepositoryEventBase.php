@@ -1,14 +1,14 @@
 <?php
 
-namespace Dugajean\Repositories\Events;
+namespace ActivismeBe\Repositories\Events;
 
 use Illuminate\Database\Eloquent\Model;
-use Dugajean\Repositories\Contracts\RepositoryInterface;
+use ActivismeBe\Repositories\Contracts\RepositoryInterface;
 
 /**
  * Class RepositoryEventBase
  *
- * @package Dugajean\Repositories\Events
+ * @package ActivismeBe\Repositories\Events
  */
 abstract class RepositoryEventBase
 {
