@@ -2,25 +2,25 @@
 
 namespace Dugajean\Repositories\Eloquent;
 
-use Dugajean\Repositories\Events\RepositoryEntityCreated;
-use Dugajean\Repositories\Events\RepositoryEntityCreating;
-use Dugajean\Repositories\Events\RepositoryEntityDeleted;
-use Dugajean\Repositories\Events\RepositoryEntityDeleting;
-use Dugajean\Repositories\Events\RepositoryEntityUpdated;
-use Dugajean\Repositories\Events\RepositoryEntityUpdating;
+use ActivismeBe\Repositories\Events\RepositoryEntityCreated;
+use ActivismeBe\Repositories\Events\RepositoryEntityCreating;
+use ActivismeBe\Repositories\Events\RepositoryEntityDeleted;
+use ActivismeBe\Repositories\Events\RepositoryEntityDeleting;
+use ActivismeBe\Repositories\Events\RepositoryEntityUpdated;
+use ActivismeBe\Repositories\Events\RepositoryEntityUpdating;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
-use Dugajean\Repositories\Criteria\Criteria;
+use ActivismeBe\Repositories\Criteria\Criteria;
 use Illuminate\Contracts\Pagination\Paginator;
-use Dugajean\Repositories\Contracts\CriteriaInterface;
-use Dugajean\Repositories\Contracts\RepositoryInterface;
-use Dugajean\Repositories\Exceptions\RepositoryException;
+use ActivismeBe\Repositories\Contracts\CriteriaInterface;
+use ActivismeBe\Repositories\Contracts\RepositoryInterface;
+use ActivismeBe\Repositories\Exceptions\RepositoryException;
 
 /**
  * Class Repository
  *
- * @package Dugajean\Repositories\Eloquent
+ * @package ActivismeBe\Repositories\Eloquent
  */
 abstract class Repository implements RepositoryInterface, CriteriaInterface
 {

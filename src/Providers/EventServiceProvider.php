@@ -1,17 +1,17 @@
 <?php
 
-namespace Dugajean\Repositories\Providers;
+namespace ActivismeBe\Repositories\Providers;
 
-use Dugajean\Repositories\Events\RepositoryEntityCreated;
-use Dugajean\Repositories\Events\RepositoryEntityDeleted;
-use Dugajean\Repositories\Events\RepositoryEntityUpdated;
-use Dugajean\Repositories\Listeners\CleanCacheRepository;
+use ActivismeBe\Repositories\Events\RepositoryEntityCreated;
+use ActivismeBe\Repositories\Events\RepositoryEntityDeleted;
+use ActivismeBe\Repositories\Events\RepositoryEntityUpdated;
+use ActivismeBe\Repositories\Listeners\CleanCacheRepository;
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Class EventServiceProvider
  *
- * @package Dugajean\Repositories\Providers
+ * @package ActivismeBe\Repositories\Providers
  */
 class EventServiceProvider extends ServiceProvider
 {

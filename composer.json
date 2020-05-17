@@ -32,18 +32,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Dugajean\\Repositories\\": "src/"
+            "ActivismeBe\\Repositories\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Dugajean\\Repositories\\Tests\\": "tests/"
+            "ActivismeBe\\Repositories\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Dugajean\\Repositories\\Providers\\RepositoryProvider"
+                "ActivismeBe\\Repositories\\Providers\\RepositoryProvider"
             ]
         }
     }

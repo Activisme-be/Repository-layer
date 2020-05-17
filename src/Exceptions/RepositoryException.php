@@ -1,11 +1,11 @@
 <?php
 
-namespace Dugajean\Repositories\Exceptions;
+namespace ActivismeBe\Repositories\Exceptions;
 
 /**
  * Class RepositoryException
  *
- * @package Dugajean\Repositories\Exceptions
+ * @package ActivismeBe\Repositories\Exceptions
  */
 class RepositoryException extends \Exception
 {

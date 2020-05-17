@@ -60,7 +60,7 @@ class FilmsController extends Controller {
 If you wish to override the path where the repositories and criteria live, publish the config file:
 
 ```bash
-php artisan vendor:publish --provider="Dugajean\Repositories\Providers\RepositoryProvider"
+php artisan vendor:publish --provider="ActivismeBe\Repositories\Providers\RepositoryProvider"
 ```
 
 Then simply open `config/repositories.php` and edit away!
@@ -69,7 +69,7 @@ Then simply open `config/repositories.php` and edit away!
 
 The following methods are available:
 
-###### Dugajean\Repositories\Contracts\RepositoryInterface
+###### ActivismeBe\Repositories\Contracts\RepositoryInterface
 
 ```php
 public function all($columns = ['*'])
@@ -85,7 +85,7 @@ public function findAllBy($field, $value, $columns = ['*'])
 public function findWhere($where, $columns = ['*'])
 ```
 
-###### Dugajean\Repositories\Contracts\CriteriaInterface
+###### ActivismeBe\Repositories\Contracts\CriteriaInterface
 
 ```php
 public function apply($model, Repository $repository)
@@ -160,8 +160,8 @@ Here is a sample criteria:
 
 namespace App\Repositories\Criteria\Films;
 
-use Dugajean\Repositories\Criteria\Criteria;
-use Dugajean\Repositories\Contracts\RepositoryInterface;
+use ActivismeBe\Repositories\Criteria\Criteria;
+use ActivismeBe\Repositories\Contracts\RepositoryInterface;
 
 class LengthOverTwoHours extends Criteria 
 {

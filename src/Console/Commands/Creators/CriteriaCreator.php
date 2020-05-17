@@ -1,13 +1,13 @@
 <?php
 
-namespace Dugajean\Repositories\Console\Commands\Creators;
+namespace ActivismeBe\Repositories\Console\Commands\Creators;
 
 use Doctrine\Common\Inflector\Inflector;
 
 /**
  * Class CriteriaCreator
  *
- * @package Dugajean\Repositories\Console\Commands\Creators
+ * @package ActivismeBe\Repositories\Console\Commands\Creators
  */
 class CriteriaCreator extends BaseCreator
 {

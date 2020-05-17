@@ -1,13 +1,13 @@
 <?php
 
-namespace Dugajean\Repositories\Contracts;
+namespace ActivismeBe\Repositories\Contracts;
 
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 
 /**
  * Interface CacheableInterface
  *
- * @package Dugajean\Repositories\Contracts
+ * @package ActivismeBe\Repositories\Contracts
  */
 interface CacheableInterface
 {

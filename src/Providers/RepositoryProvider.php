@@ -1,19 +1,19 @@
 <?php
 
-namespace Dugajean\Repositories\Providers;
+namespace ActivismeBe\Repositories\Providers;
 
 use Illuminate\Support\Composer;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
-use Dugajean\Repositories\Console\Commands\MakeCriteriaCommand;
-use Dugajean\Repositories\Console\Commands\MakeRepositoryCommand;
-use Dugajean\Repositories\Console\Commands\Creators\CriteriaCreator;
-use Dugajean\Repositories\Console\Commands\Creators\RepositoryCreator;
+use ActivismeBe\Repositories\Console\Commands\MakeCriteriaCommand;
+use ActivismeBe\Repositories\Console\Commands\MakeRepositoryCommand;
+use ActivismeBe\Repositories\Console\Commands\Creators\CriteriaCreator;
+use ActivismeBe\Repositories\Console\Commands\Creators\RepositoryCreator;
 
 /**
  * Class RepositoryProvider
  *
- * @package Dugajean\Repositories\Providers
+ * @package ActivismeBe\Repositories\Providers
  */
 class RepositoryProvider extends ServiceProvider
 {

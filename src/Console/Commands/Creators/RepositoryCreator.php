@@ -1,6 +1,6 @@
 <?php
 
-namespace Dugajean\Repositories\Console\Commands\Creators;
+namespace ActivismeBe\Repositories\Console\Commands\Creators;
 
 use Illuminate\Support\Facades\Artisan;
 use Doctrine\Common\Inflector\Inflector;
@@ -8,7 +8,7 @@ use Doctrine\Common\Inflector\Inflector;
 /**
  * Class RepositoryCreator
  *
- * @package Dugajean\Repositories\Console\Commands\Creators
+ * @package ActivismeBe\Repositories\Console\Commands\Creators
  */
 class RepositoryCreator extends BaseCreator
 {
