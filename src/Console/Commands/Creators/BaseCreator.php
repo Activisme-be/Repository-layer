@@ -80,7 +80,7 @@ abstract class BaseCreator
      * @param  BaseCommand $command
      * @return int
      */
-    public function create(string $name, string $model, BaseCommand $command): int
+    public function create(?string $name, ?string $model, BaseCommand $command): int
     {
         $this->command = $command;
 
