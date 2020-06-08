@@ -1,9 +1,9 @@
 <?php
 
-namespace Dugajean\Repositories\Criteria;
+namespace ActivismeBe\Repositories\Criteria;
 
 use Illuminate\Database\Eloquent\Model;
-use Dugajean\Repositories\Contracts\RepositoryInterface;
+use ActivismeBe\Repositories\Contracts\RepositoryInterface;
 
 /**
  * Class Criteria
@@ -18,5 +18,5 @@ abstract class Criteria
      *
      * @return mixed
      */
-    public abstract function apply($model, RepositoryInterface $repository);
+    abstract public function apply($model, RepositoryInterface $repository);
 }

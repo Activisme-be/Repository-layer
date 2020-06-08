@@ -1,18 +1,18 @@
 <?php
 
-namespace Dugajean\Repositories\Console\Commands;
+namespace ActivismeBe\Repositories\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Composer;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
-use Dugajean\Repositories\Console\Commands\Creators\BaseCreator;
-use Dugajean\Repositories\Console\Commands\Creators\RepositoryCreator;
+use ActivismeBe\Repositories\Console\Commands\Creators\BaseCreator;
+use ActivismeBe\Repositories\Console\Commands\Creators\RepositoryCreator;
 
 /**
  * Class BaseCommand
  *
- * @package Dugajean\Repositories\Console\Commands
+ * @package ActivismeBe\Repositories\Console\Commands
  */
 abstract class BaseCommand extends Command
 {

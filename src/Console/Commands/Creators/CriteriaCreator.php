@@ -1,14 +1,13 @@
 <?php
 
-namespace Dugajean\Repositories\Console\Commands\Creators;
+namespace ActivismeBe\Repositories\Console\Commands\Creators;
 
-use Illuminate\Support\Facades\Config;
 use Doctrine\Common\Inflector\Inflector;
 
 /**
  * Class CriteriaCreator
  *
- * @package Dugajean\Repositories\Console\Commands\Creators
+ * @package ActivismeBe\Repositories\Console\Commands\Creators
  */
 class CriteriaCreator extends BaseCreator
 {
@@ -21,7 +20,7 @@ class CriteriaCreator extends BaseCreator
     {
         $criteria = $this->getName();
         $model = $this->pluralizeModel();
-        $criteriaNamespace = Config::get('repositories.criteria_namespace');
+        $criteriaNamespace = config('repositories.criteria_namespace');
         $criteriaClass = $criteria;
 
         if (isset($model) && !empty($model)) {

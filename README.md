@@ -60,7 +60,7 @@ class FilmsController extends Controller {
 If you wish to override the path where the repositories and criteria live, publish the config file:
 
 ```bash
-php artisan vendor:publish --provider="Dugajean\Repositories\Providers\RepositoryProvider"
+php artisan vendor:publish --provider="ActivismeBe\Repositories\Providers\RepositoryProvider"
 ```
 
 Then simply open `config/repositories.php` and edit away!
@@ -69,7 +69,7 @@ Then simply open `config/repositories.php` and edit away!
 
 The following methods are available:
 
-###### Dugajean\Repositories\Contracts\RepositoryInterface
+###### ActivismeBe\Repositories\Contracts\RepositoryInterface
 
 ```php
 public function all($columns = ['*'])
@@ -85,7 +85,7 @@ public function findAllBy($field, $value, $columns = ['*'])
 public function findWhere($where, $columns = ['*'])
 ```
 
-###### Dugajean\Repositories\Contracts\CriteriaInterface
+###### ActivismeBe\Repositories\Contracts\CriteriaInterface
 
 ```php
 public function apply($model, Repository $repository)
@@ -160,8 +160,8 @@ Here is a sample criteria:
 
 namespace App\Repositories\Criteria\Films;
 
-use Dugajean\Repositories\Criteria\Criteria;
-use Dugajean\Repositories\Contracts\RepositoryInterface;
+use ActivismeBe\Repositories\Criteria\Criteria;
+use ActivismeBe\Repositories\Contracts\RepositoryInterface;
 
 class LengthOverTwoHours extends Criteria 
 {
@@ -208,6 +208,84 @@ class FilmsController extends Controller
     }
 }
 ```
+
+## Caching 
+
+Add a layer of the cache easily to your repository.
+
+### Cache usage 
+
+Implements the interface `CacheInterface` and use the `CacheableRepository` trait. 
+
+```php
+use ActivismeBe\Repositories\Eloquent\Repository; 
+use ActivismeBe\Repositories\Contracts\CacheableInterface;
+use ActivismeBe\Repositories\Traits\CacheableRepository;
+
+class ExampleRepository extends Repository implements CacheableInterface
+{
+    use CacheableRepository;
+
+    ...
+} 
+```
+
+Done, done that your repository will be cached, and the repository cache is cleared whenever an item is created, 
+modified or deleted.
+
+### Cache config 
+
+You can change the cache setting in the file `config/repository.php` and also directly on your repository. 
+
+Below u can fix the available caching settings: 
+
+```php
+'cache' => [
+    'enabled' => true,              // Enable or disable cache repositories
+    'minutes' => 30,                // Lifetime of the cache
+    'repository' => 'cache',        // Repository Cache, implementation Illuminate\Contracts\Cache\Repository
+    'clean' => [                    // Sets clearing the cache
+        'enabled' => true,          // Enable, disable clearing the cache on changes
+        'on' => [
+            'create' => true,       // Enable, disable clearing the cache when you create an item
+            'update' => true,       // Enable, disable clearing the cache when you upgrading an item
+            'delete' => true,       // Enable, disable clearing the cache when you delete an item
+        ],
+    ],
+    'params' => [
+        'skipCache' => 'skipCache', // Request parameter that will be used to bypass the cache repository
+    ], 
+    'allowed' => [
+        'only' => null,             // Allow caching only for some methods
+        'except' => null,           // Allow caching for all available methods, except
+    ],
+],
+```
+
+it is possible to override these settings directly in the repository: 
+
+```php
+use ActivismeBe\Repositories\Eloquent\Repository; 
+use ActivismeBe\Repositories\Contracts\CacheableInterface;
+use ActivismeBe\Repositories\Traits\CacheableRepository;
+
+class ExampleRepository extends BaseRepository implements CacheableInterface
+{
+    use CacheableRepository;
+
+    /**
+     * Setting the lifetime of the cache to a repository specifically
+     */
+    protected int $cacheMinutes = 90;
+    
+    protected array $cacheOnly = ['all', ...]; 
+    protected array $cacheExcept = ['find', ...];
+
+    ...
+}
+```
+
+The cacheable methods are: all, paginate, find, findByField, findWhere, getByCriteria
 
 ## Testing
 

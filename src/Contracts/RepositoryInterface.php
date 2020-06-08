@@ -1,11 +1,11 @@
 <?php
 
-namespace Dugajean\Repositories\Contracts;
+namespace ActivismeBe\Repositories\Contracts;
 
 /**
  * Interface RepositoryInterface
  *
- * @package Dugajean\Repositories\Contracts
+ * @package ActivismeBe\Repositories\Contracts
  */
 interface RepositoryInterface
 {

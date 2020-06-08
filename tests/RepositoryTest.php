@@ -1,6 +1,6 @@
 <?php
 
-namespace Dugajean\Repositories\Tests;
+namespace ActivismeBe\Repositories\Tests;
 
 use Mockery as m;
 use PHPUnit\Framework\TestCase;

@@ -1,15 +1,14 @@
 <?php
 
-namespace Dugajean\Repositories\Console\Commands\Creators;
+namespace ActivismeBe\Repositories\Console\Commands\Creators;
 
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Config;
-use Dugajean\Repositories\Console\Commands\BaseCommand;
+use ActivismeBe\Repositories\Console\Commands\BaseCommand;
 
 /**
  * Class BaseCreator
  *
- * @package Dugajean\Repositories\Console\Commands\Creators
+ * @package ActivismeBe\Repositories\Console\Commands\Creators
  */
 abstract class BaseCreator
 {
@@ -81,7 +80,7 @@ abstract class BaseCreator
      * @param  BaseCommand $command
      * @return int
      */
-    public function create(string $name, string $model, BaseCommand $command): int
+    public function create(?string $name, ?string $model, BaseCommand $command): int
     {
         $this->command = $command;
 
@@ -99,7 +98,7 @@ abstract class BaseCreator
      */
     protected function getDirectory()
     {
-        return Config::get("repositories.{$this->command->getCurrentEntity()}_path");
+        return config("repositories.{$this->command->getCurrentEntity()}_path");
     }
 
     /**
@@ -155,10 +154,9 @@ abstract class BaseCreator
      */
     protected function populateStub()
     {
-        $populate_data = $this->getPopulateData();
         $stub = $this->getStub();
 
-        foreach ($populate_data as $key => $value) {
+        foreach ($this->getPopulateData() as $key => $value) {
             $stub = str_replace($key, $value, $stub);
         }
 

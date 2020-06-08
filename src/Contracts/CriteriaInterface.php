@@ -1,8 +1,8 @@
 <?php
 
-namespace Dugajean\Repositories\Contracts;
+namespace ActivismeBe\Repositories\Contracts;
 
-use Dugajean\Repositories\Criteria\Criteria;
+use ActivismeBe\Repositories\Criteria\Criteria;
 
 interface CriteriaInterface
 {

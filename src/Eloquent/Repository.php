@@ -2,19 +2,25 @@
 
 namespace Dugajean\Repositories\Eloquent;
 
+use ActivismeBe\Repositories\Events\RepositoryEntityCreated;
+use ActivismeBe\Repositories\Events\RepositoryEntityCreating;
+use ActivismeBe\Repositories\Events\RepositoryEntityDeleted;
+use ActivismeBe\Repositories\Events\RepositoryEntityDeleting;
+use ActivismeBe\Repositories\Events\RepositoryEntityUpdated;
+use ActivismeBe\Repositories\Events\RepositoryEntityUpdating;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
-use Dugajean\Repositories\Criteria\Criteria;
+use ActivismeBe\Repositories\Criteria\Criteria;
 use Illuminate\Contracts\Pagination\Paginator;
-use Dugajean\Repositories\Contracts\CriteriaInterface;
-use Dugajean\Repositories\Contracts\RepositoryInterface;
-use Dugajean\Repositories\Exceptions\RepositoryException;
+use ActivismeBe\Repositories\Contracts\CriteriaInterface;
+use ActivismeBe\Repositories\Contracts\RepositoryInterface;
+use ActivismeBe\Repositories\Exceptions\RepositoryException;
 
 /**
  * Class Repository
  *
- * @package Dugajean\Repositories\Eloquent
+ * @package ActivismeBe\Repositories\Eloquent
  */
 abstract class Repository implements RepositoryInterface, CriteriaInterface
 {
@@ -71,7 +77,15 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      *
      * @return mixed
      */
-    public abstract function model();
+    abstract public function model();
+
+    /**
+     * @throws RepositoryException
+     */
+    public function resetModel()
+    {
+        $this->makeModel();
+    }
 
     /**
      * Method for getting all the records from the storage.
@@ -144,7 +158,13 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function create(array $data)
     {
-        return $this->model->create($data);
+        event(new RepositoryEntityCreating($this, $data));
+
+        $entity = $this->model->save($data);
+
+        event(new RepositoryEntityCreated($this, $entity));
+
+        return $entity;
     }
 
     /**
@@ -159,7 +179,14 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
             $this->model->$k = $v;
         }
 
-        return $this->model->save();
+        event(new RepositoryEntityCreating($this, $data));
+
+        $entity = $this->model->save();
+
+        event(new RepositoryEntityCreated($this, $entity));
+
+
+        return $entity;
     }
 
     /**
@@ -172,7 +199,13 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function update(array $data, $id, $attribute = 'id')
     {
-        return $this->model->where($attribute, '=', $id)->update($data);
+        $model = $this->model->where($attribute, '=', $id);
+
+        event(new RepositoryEntityUpdating($this, $model));
+        $model->update($data);
+        event(new RepositoryEntityUpdated($this, $model));
+
+        return $model;
     }
 
     /**
@@ -184,11 +217,17 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function updateRich(array $data, $id)
     {
-        if (!($model = $this->model->find($id))) {
+        $model = $this->model->find($id);
+
+        if (! $model) {
             return false;
         }
 
-        return $model->fill($data)->save();
+        event(new RepositoryEntityUpdating($this, $model));
+        $updated = $model->fill($data)->save();
+        event(new RepositoryEntityUpdated($this, $model));
+
+        return $updated;
     }
 
     /**
@@ -199,7 +238,16 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function delete($id)
     {
-        return $this->model->destroy($id);
+        $model = $this->find($id);
+        $orginalModel = clone $model;
+
+        event(new RepositoryEntityDeleting($this, $model));
+
+        $deleted = $model->delete();
+
+        event(new RepositoryEntityDeleted($this, $orginalModel));
+
+        return $deleted;
     }
 
     /**

@@ -1,5 +1,5 @@
 {
-    "name": "dugajean/repositories",
+    "name": "actb/repositories",
     "description": "Laravel Repositories",
     "license": "MIT",
     "homepage": "http://dukagj.in",
@@ -20,29 +20,30 @@
     ],
     "require": {
         "php": "^7.4",
-        "illuminate/support": "^5.5|^6",
-        "illuminate/database": "^5.5|^6",
-        "illuminate/filesystem": "^5.5|^6",
-        "illuminate/console": "^5.5|^6"
+        "illuminate/support": "^5.5|^6.0|^7.0",
+        "illuminate/database": "^5.5|^6|^7.0",
+        "illuminate/filesystem": "^5.5|^6|^7.0",
+        "illuminate/console": "^5.5|^6|^7.0"
     },
     "require-dev": {
         "mockery/mockery": "@stable",
-        "phpunit/phpunit": "^8.3"
+        "phpunit/phpunit": "^8.3",
+        "friendsofphp/php-cs-fixer": "^2.16"
     },
     "autoload": {
         "psr-4": {
-            "Dugajean\\Repositories\\": "src/"
+            "ActivismeBe\\Repositories\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Dugajean\\Repositories\\Tests\\": "tests/"
+            "ActivismeBe\\Repositories\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Dugajean\\Repositories\\Providers\\RepositoryProvider"
+                "ActivismeBe\\Repositories\\Providers\\RepositoryProvider"
             ]
         }
     }
